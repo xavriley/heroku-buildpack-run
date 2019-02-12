@@ -13,8 +13,10 @@ This buildpack allows to execute arbitrary commands on the build dyno during the
 Add the buildpack to your app:
 
 ~~~bash
-heroku buildpacks:add https://github.com/weibeld/heroku-buildpack-run
+heroku buildpacks:add --index 1 https://github.com/parcelconnect/heroku-buildpack-run
 ~~~
+
+`--index 1` means that this buildpack is run before any others. Buildpacks are order dependent and the last buildpack in the list is the one which gets to run the process command defined in the `Procfile`.
 
 Create the file `buildpack-run.sh` in the root directory of your app. For example:
 
